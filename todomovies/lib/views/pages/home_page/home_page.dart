@@ -1,4 +1,7 @@
+
 import 'package:flutter/material.dart';
+import 'package:todomovies/views/widgets/stateful/bottom_nav_widget.dart';
+import 'package:todomovies/views/widgets/stateless/body_in_threater_widget.dart';
 import 'package:todomovies/views/widgets/stateless/tabbar_widget.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -29,20 +32,28 @@ class _HomePageScreenState extends State<HomePageScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
-        child: Container(
-          color: Colors.black,
-          child: Column(
-            children: [
-              Expanded(
-                child: TabBarWidget(
-                    tabController: _tabController,
-                    selectedItemTabBar: _selectedItemTabBar),
-              ),
-            ],
-          ),
+        child: Stack(
+          children: [
+            BodyInThreaterWidget(tabController: _tabController),
+            Positioned(
+              child: TabBarWidget(
+                  tabController: _tabController,
+                  selectedItemTabBar: _selectedItemTabBar),
+            ),
+            const Align(
+                alignment: Alignment.bottomCenter,
+                child: BottomNavigationWidget()),
+          ],
         ),
       ),
+      // bottomNavigationBar: ClipRect(
+      //   child: BackdropFilter(
+      //     filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+      //     child: const BottomNavigationWidget(),
+      //   ),
+      // ),
     );
   }
 }

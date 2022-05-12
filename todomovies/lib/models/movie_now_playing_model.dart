@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:todomovies/common/number_common.dart';
 
@@ -43,7 +43,7 @@ class MovieNowPlaying {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (dates != null) {
       data['dates'] = dates!.toJson();
     }
@@ -69,7 +69,7 @@ class Dates {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['maximum'] = maximum;
     data['minimum'] = minimum;
     return data;
@@ -114,7 +114,7 @@ class Results {
     for (var item in json['genre_ids']) {
       genreIds?.add(item);
     }
-    ;
+
     id = json['id'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todomovies/models/movie_now_playing_model.dart';
+import 'package:todomovies/network/api_helper.dart';
 import 'package:todomovies/network/http_service.dart';
+import 'package:todomovies/views/pages/movie_detail/movie_detail_page.dart';
 
 class InThreaterPage extends StatefulWidget {
   const InThreaterPage({Key? key}) : super(key: key);
@@ -12,13 +14,15 @@ class InThreaterPage extends StatefulWidget {
 class _InThreaterPageState extends State<InThreaterPage> {
   late HttpService apiService;
   late Future<MovieNowPlaying> moviePlaying;
-  late String urlImage;
+
+  // late ScrollController _scrollController;
   @override
   void initState() {
     super.initState();
     apiService = HttpService();
     moviePlaying = apiService.getMovieNowPlaying();
-    urlImage = 'https://image.tmdb.org/t/p/w500';
+
+    // _scrollController = ScrollController();
   }
 
   @override
@@ -45,8 +49,20 @@ class _InThreaterPageState extends State<InThreaterPage> {
                             mainAxisSpacing: 5,
                             childAspectRatio: 0.7),
                     itemBuilder: (context, int index) {
-                      return Image.network(
-                          '$urlImage${snapshot.data?.results?[index].posterPath}');
+                      print('id: ${snapshot.data?.results?[index].posterPath}');
+                      return InkWell(
+                        onTap: (() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetailPage(
+                                  idMovie: snapshot.data?.results?[index].id),
+                            ),
+                          );
+                        }),
+                        child: Image.network(
+                            '$urlImage${snapshot.data?.results?[index].posterPath}'),
+                      );
                     }),
               );
             } else {
