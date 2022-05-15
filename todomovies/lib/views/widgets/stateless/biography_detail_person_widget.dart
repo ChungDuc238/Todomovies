@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todomovies/views/pages/home_page/in_threaters_page.dart';
-
-class BodyInThreaterWidget extends StatelessWidget {
-  const BodyInThreaterWidget({
+import 'package:todomovies/common/common.dart';
+import 'package:todomovies/views/pages/detail_cast_person_page/detail_cast_person_page.dart';
+class BiographyWidget extends StatelessWidget {
+  const BiographyWidget({
     Key? key,
     required TabController tabController,
   })  : _tabController = tabController,
@@ -12,27 +12,26 @@ class BodyInThreaterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final snapshot = InheritedDataDetailCasPerson.of(context)?.snapshot;
     return Container(
       width: double.infinity,
-      // height: 300,
+      height: double.infinity,
       color: const Color(0xFF49464b),
+      padding: const EdgeInsets.all(8),
       // width: double.infinity,
       // height: double.infinity,
       child: TabBarView(
         controller: _tabController,
-        children: const [
+        children: [
           SizedBox(
             width: 30,
             height: 30.0,
-            child: Text('Top list1'),
+            child: Text(
+              '${snapshot?.data?.biography}',
+              style: textStyle.copyWith(fontSize: 18.0, height: 1.3),
+            ),
           ),
-          SizedBox(
-            width: 30,
-            height: 30.0,
-            child: Text('Top list2'),
-          ),
-          InThreaterPage(),
-          SizedBox(
+          const SizedBox(
             width: 30,
             height: 30.0,
             child: Text('Top list2'),

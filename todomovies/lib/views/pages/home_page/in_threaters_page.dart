@@ -49,7 +49,6 @@ class _InThreaterPageState extends State<InThreaterPage> {
                             mainAxisSpacing: 5,
                             childAspectRatio: 0.7),
                     itemBuilder: (context, int index) {
-                      print('id: ${snapshot.data?.results?[index].posterPath}');
                       return InkWell(
                         onTap: (() {
                           Navigator.push(

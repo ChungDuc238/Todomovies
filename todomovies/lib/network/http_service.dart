@@ -9,7 +9,7 @@ class HttpService {
   final String? pageUrl = '&page=1';
   Future<MovieNowPlaying> getMovieNowPlaying() async {
     final response = await client.get(Uri.parse(
-        "$baseApi/now_playing?api_key=$apiKey"));
+        "$baseApi/movie/now_playing?api_key=$apiKey"));
     final data = jsonDecode(response.body) as Map<String, dynamic>?;
     if (data != null) {
       final movieNowPlay = MovieNowPlaying.fromJson(data);
