@@ -4,14 +4,15 @@ import 'package:todomovies/network/api_helper.dart';
 import 'package:todomovies/network/http_service.dart';
 import 'package:todomovies/views/pages/movie_detail/movie_detail_page.dart';
 
-class InThreaterPage extends StatefulWidget {
-  const InThreaterPage({Key? key}) : super(key: key);
+class PageMovieWidget extends StatefulWidget {
+  final String category;
+  const PageMovieWidget({Key? key, required this.category}) : super(key: key);
 
   @override
-  State<InThreaterPage> createState() => _InThreaterPageState();
+  State<PageMovieWidget> createState() => _PageMovieWidgetState();
 }
 
-class _InThreaterPageState extends State<InThreaterPage> {
+class _PageMovieWidgetState extends State<PageMovieWidget> {
   late HttpService apiService;
   late Future<MovieNowPlaying> moviePlaying;
 
@@ -20,7 +21,7 @@ class _InThreaterPageState extends State<InThreaterPage> {
   void initState() {
     super.initState();
     apiService = HttpService();
-    moviePlaying = apiService.getMovieNowPlaying();
+    moviePlaying = apiService.getMovieNowPlaying(widget.category);
 
     // _scrollController = ScrollController();
   }

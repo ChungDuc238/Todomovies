@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todomovies/views/widgets/stateful/bottom_nav_widget.dart';
-import 'package:todomovies/views/widgets/stateless/body_in_threater_widget.dart';
+import 'package:todomovies/views/widgets/stateless/body_home_view.dart';
 import 'package:todomovies/views/widgets/stateless/tabbar_widget.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -36,7 +36,7 @@ class _HomePageScreenState extends State<HomePageScreen>
       body: SafeArea(
         child: Stack(
           children: [
-            BodyInThreaterWidget(tabController: _tabController),
+            BodyInHomeView(tabController: _tabController),
             Positioned(
               child: TabBarWidget(
                   tabController: _tabController,

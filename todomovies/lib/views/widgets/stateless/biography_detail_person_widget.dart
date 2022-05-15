@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todomovies/common/common.dart';
 import 'package:todomovies/views/pages/detail_cast_person_page/detail_cast_person_page.dart';
+
 class BiographyWidget extends StatelessWidget {
   const BiographyWidget({
     Key? key,
@@ -15,7 +16,7 @@ class BiographyWidget extends StatelessWidget {
     final snapshot = InheritedDataDetailCasPerson.of(context)?.snapshot;
     return Container(
       width: double.infinity,
-      height: double.infinity,
+      height: 500,
       color: const Color(0xFF49464b),
       padding: const EdgeInsets.all(8),
       // width: double.infinity,

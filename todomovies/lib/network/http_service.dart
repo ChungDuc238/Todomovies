@@ -7,9 +7,9 @@ import 'package:todomovies/network/api_helper.dart';
 class HttpService {
   Client client = Client();
   final String? pageUrl = '&page=1';
-  Future<MovieNowPlaying> getMovieNowPlaying() async {
+  Future<MovieNowPlaying> getMovieNowPlaying(String category) async {
     final response = await client.get(Uri.parse(
-        "$baseApi/movie/now_playing?api_key=$apiKey"));
+        "$baseApi/movie/$category?api_key=$apiKey"));
     final data = jsonDecode(response.body) as Map<String, dynamic>?;
     if (data != null) {
       final movieNowPlay = MovieNowPlaying.fromJson(data);
