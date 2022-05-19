@@ -7,7 +7,8 @@ import 'package:todomovies/views/widgets/stateful/detail_person/detail_cast_pers
 class DetailCastPersonPage extends StatefulWidget {
   final int? idPerson;
   final String? imageBackground;
-  const DetailCastPersonPage({Key? key, required this.idPerson, this.imageBackground})
+  const DetailCastPersonPage(
+      {Key? key, required this.idPerson, this.imageBackground})
       : super(key: key);
 
   @override
@@ -33,9 +34,11 @@ class _DetailCastPersonPageState extends State<DetailCastPersonPage> {
           future: personDetail,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
+              // print(snapshot.data!.id!);
               return InheritedDataDetailCasPerson(
                 snapshot: snapshot,
                 imageBackground: widget.imageBackground,
+                id: snapshot.data!.id!,
                 child: const DetailCasPersonWidget(),
               );
             } else if (snapshot.hasError) {
@@ -55,9 +58,14 @@ class _DetailCastPersonPageState extends State<DetailCastPersonPage> {
 
 class InheritedDataDetailCasPerson extends InheritedWidget {
   final AsyncSnapshot<DetailPerson>? snapshot;
-    final String? imageBackground;
+  final String? imageBackground;
+  final int id;
   // ignore: use_key_in_widget_constructors
-  const InheritedDataDetailCasPerson({required Widget child, this.snapshot, this.imageBackground})
+  const InheritedDataDetailCasPerson(
+      {required Widget child,
+      this.snapshot,
+      this.imageBackground,
+      required this.id})
       : super(child: child);
 
   @override

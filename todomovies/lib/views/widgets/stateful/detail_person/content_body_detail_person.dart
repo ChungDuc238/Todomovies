@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todomovies/views/widgets/stateful/header_body_detail_person_widget.dart';
+import 'package:todomovies/views/widgets/stateful/detail_person/header_body_detail_person_widget.dart';
 import 'package:todomovies/views/widgets/stateless/biography_detail_person_widget.dart';
 
 class ContentBodyDetailWidget extends StatefulWidget {

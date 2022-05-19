@@ -1,22 +1,20 @@
-
-
 import 'package:todomovies/common/number_common.dart';
 
-class MovieNowPlaying {
+class Movie {
   Dates? dates;
   int? page;
   List<Results>? results;
   int? totalPages;
   int? totalResults;
 
-  MovieNowPlaying(
+  Movie(
       {this.dates,
       this.page,
       this.results,
       this.totalPages,
       this.totalResults});
 
-  MovieNowPlaying.fromJson(Map<String, dynamic> json) {
+  Movie.fromJson(Map<String, dynamic> json) {
     dates = json['dates'] != null ? Dates.fromJson(json['dates']) : null;
     page = json['page'];
     if (json['results'] != null) {
@@ -27,19 +25,6 @@ class MovieNowPlaying {
     }
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
-    // List<Results> rs = [];
-    // if (json['results'] != null) {
-    //   json['results'].forEach((v) {
-    //     rs.add(Results.fromJson(v));
-    //   });
-    // }
-    // return MovieNowPlaying(
-    //   dates: json['dates'] != null ? Dates.fromJson(json['dates']) : null,
-    //   results: rs,
-    //   page: json['page'],
-    //   totalPages: json['total_pages'],
-    //   totalResults: json['total_results'],
-    // );
   }
 
   Map<String, dynamic> toJson() {
@@ -119,13 +104,13 @@ class Results {
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
-    popularity = json['popularity'];
+    popularity = NumberCommon.checkDouble(json['popularity']);
     posterPath = json['poster_path'];
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
     voteAverage = NumberCommon.checkDouble(json['vote_average']);
-    voteCount = json['vote_count'] as int?;
+    voteCount = json['vote_count'];
   }
 
   Map<String, dynamic> toJson() {

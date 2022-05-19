@@ -57,9 +57,8 @@ class _InforPersonState extends State<InforPerson> {
     final snapshot = InheritedDataDetailCasPerson.of(context)?.snapshot;
     if (snapshot?.data?.birthday != null) {
       final yearOfBirth = snapshot?.data?.birthday!.split('-')[0];
-      final yearOld =
-          int.parse(CurrentYear.getCurrentYear()) - int.parse(yearOfBirth!);
-      return yearOld.toString() + 'Years Old';
+      final yearOld = CurrentYear.getCurrentYear() - int.parse(yearOfBirth!);
+      return yearOld.toString() + ' Years Old';
     }
     return 'Unknown';
   }

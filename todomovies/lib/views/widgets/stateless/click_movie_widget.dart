@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todomovies/views/pages/movie_detail/movie_detail_page.dart';
+import 'package:todomovies/views/pages/trailer_movie_page/trailer_movie_page.dart';
 
 class ClickMovieWidget extends StatelessWidget {
   const ClickMovieWidget({
@@ -7,6 +9,7 @@ class ClickMovieWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _iconColor = Colors.white;
+    final id = InheritedDataMovieDetail.of(context)?.id;
     return Container(
       decoration: const BoxDecoration(
         border: Border(
@@ -19,10 +22,18 @@ class ClickMovieWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.play_circle_outline,
-            color: _iconColor,
-            size: 48.0,
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TrailerMoviePage(id: id!),
+              ),
+            ),
+            child: Icon(
+              Icons.play_circle_outline,
+              color: _iconColor,
+              size: 48.0,
+            ),
           ),
           Icon(
             Icons.add,

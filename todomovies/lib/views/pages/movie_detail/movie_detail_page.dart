@@ -6,7 +6,8 @@ import 'package:todomovies/views/widgets/stateful/movie_detail/movie_detail_widg
 
 class MovieDetailPage extends StatefulWidget {
   final int? idMovie;
-  const MovieDetailPage({Key? key, this.idMovie}) : super(key: key);
+  const MovieDetailPage( {Key? key, required this.idMovie})
+      : super(key: key);
 
   @override
   State<MovieDetailPage> createState() => _MovieDetailPageState();
@@ -21,6 +22,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     _apiMovieDetail = ApiMovieDetail();
     movieDetail = _apiMovieDetail.getMovieDetail(
         '$baseApi/movie/${widget.idMovie}?api_key=$apiKey&append_to_response=credits');
+        
   }
 
   @override
@@ -34,7 +36,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               return InheritedDataMovieDetail(
                 id: widget.idMovie,
                 snapshot: snapshot,
-                child: MovieDetailWidget(snapshot: snapshot),
+                child: const MovieDetailWidget(),
               );
             } else if (snapshot.hasError) {
               return Center(

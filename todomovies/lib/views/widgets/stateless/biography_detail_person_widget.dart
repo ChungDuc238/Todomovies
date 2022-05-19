@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todomovies/common/common.dart';
-import 'package:todomovies/views/pages/detail_cast_person_page/detail_cast_person_page.dart';
+import 'package:todomovies/views/widgets/stateful/detail_person/credit_card_person_widget.dart';
+import 'package:todomovies/views/widgets/stateless/content_overview_person.dart';
 
 class BiographyWidget extends StatelessWidget {
   const BiographyWidget({
@@ -13,30 +13,18 @@ class BiographyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final snapshot = InheritedDataDetailCasPerson.of(context)?.snapshot;
     return Container(
       width: double.infinity,
       height: 500,
-      color: const Color(0xFF49464b),
+      color: const Color(0xFF0f0f0f),
       padding: const EdgeInsets.all(8),
       // width: double.infinity,
       // height: double.infinity,
       child: TabBarView(
         controller: _tabController,
-        children: [
-          SizedBox(
-            width: 30,
-            height: 30.0,
-            child: Text(
-              '${snapshot?.data?.biography}',
-              style: textStyle.copyWith(fontSize: 18.0, height: 1.3),
-            ),
-          ),
-          const SizedBox(
-            width: 30,
-            height: 30.0,
-            child: Text('Top list2'),
-          ),
+        children: const [
+          ContentOverviewPerson(),
+          CreditCardPerson(),
         ],
       ),
     );

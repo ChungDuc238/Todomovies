@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todomovies/common/common.dart';
-import 'package:todomovies/views/widgets/stateless/custom_star_rating_widget.dart';
+import 'package:todomovies/views/widgets/stateless/movie_detail/custom_star_rating_widget.dart';
 
 class MyRatingWidget extends StatefulWidget {
   const MyRatingWidget({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todomovies/views/widgets/stateful/get_directorer_widget.dart';
-import 'package:todomovies/views/widgets/stateful/list_cast_person_widget.dart';
+import 'package:todomovies/views/widgets/stateful/detail_person/get_directorer_widget.dart';
+import 'package:todomovies/views/widgets/stateful/detail_person/list_cast_person_widget.dart';
 
 class ShowListCastMovieWidget extends StatefulWidget {
   const ShowListCastMovieWidget({Key? key}) : super(key: key);
