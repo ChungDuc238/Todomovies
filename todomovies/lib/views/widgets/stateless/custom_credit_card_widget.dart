@@ -32,7 +32,7 @@ class CustomCreditCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 300.0,
+                width: 200,
                 child: Flexible(
                   child: Text(
                     title!,

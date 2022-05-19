@@ -19,7 +19,7 @@ class _TrailerMoviePageState extends State<TrailerMoviePage> {
   late Future<VideoMovie> videoMovie;
   late VideoMovie _videoMovies;
   late YoutubePlayerController _controller;
-   String key='';
+  String key = '';
   @override
   void initState() {
     super.initState();
@@ -27,9 +27,7 @@ class _TrailerMoviePageState extends State<TrailerMoviePage> {
     videoMovie = _initVideoMovies();
 
     getVideo();
-    //key = _videoMovies.results?[13].key;
-
-    key="Rf8LAYJSOL8";
+    // key = _videoMovies.results?[13].key;
 
     log(key.toString());
     _controller = YoutubePlayerController(
@@ -101,6 +99,14 @@ class _TrailerMoviePageState extends State<TrailerMoviePage> {
 
   void getVideo() async {
     _videoMovies = await _initVideoMovies();
+    int? lenght = _videoMovies.results?.length;
+    if (lenght != null) {
+      for (int i = 0; i < lenght; i++) {
+        if (_videoMovies.results?[i].type?.compareTo('Trailer') == 0) {
+          key = _videoMovies.results?[i].key ?? '';
+        }
+      }
+    }
   }
 
   // String? _getListKeyMovie() {
@@ -115,4 +121,5 @@ class _TrailerMoviePageState extends State<TrailerMoviePage> {
 
   //   return null;
   // }
+
 }

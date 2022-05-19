@@ -1,10 +1,12 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:todomovies/views/pages/home_page/home_page.dart';
 
-
-
 void main() {
-  runApp(const MyApp());
+  runApp(DevicePreview(
+    
+    builder: (context) => const MyApp(), // Wrap your app
+  ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo Movies',
       debugShowCheckedModeBanner: false,
+       useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
